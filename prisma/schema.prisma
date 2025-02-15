@@ -1,0 +1,92 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Enum untuk role pengguna
+enum UserRole {
+  ADMIN
+  KASIR
+}
+
+// Model Brand Produk
+model Brand {
+  id          String    @id @default(cuid())
+  name        String    @unique
+  description String?
+  products    Product[]
+  isActive    Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+// Model Kategori Produk
+model Category {
+  id          String    @id @default(cuid())
+  name        String    @unique
+  description String?
+  products    Product[]
+  isActive    Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+// Model Pengguna
+model User {
+  id            String        @id @default(cuid())
+  email         String        @unique
+  name          String
+  password      String
+  role          UserRole      @default(KASIR)
+  kasirTransactions Transaction[] @relation("KasirTransaction")
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+// Model Produk
+model Product {
+  id            String     @id @default(cuid())
+  name          String
+  description   String?
+  brandId       String
+  brand         Brand      @relation(fields: [brandId], references: [id])
+  categoryId    String
+  category      Category   @relation(fields: [categoryId], references: [id])
+  price         Decimal    @db.Decimal(10, 2)
+  stock         Int        @default(0)
+  buyPrice      Decimal    @db.Decimal(10, 2)
+  transactionItems TransactionItem[]
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+}
+
+// Model Item Transaksi
+model TransactionItem {
+  id            String        @id @default(cuid())
+  transactionId String
+  transaction   Transaction   @relation(fields: [transactionId], references: [id])
+  productId     String
+  product       Product       @relation(fields: [productId], references: [id])
+  quantity      Int
+  price         Decimal       @db.Decimal(10, 2)
+  subtotal      Decimal       @db.Decimal(10, 2)
+  notes         String?
+}
+
+// Model Transaksi
+model Transaction {
+  id            String            @id @default(cuid())
+  buyerName     String?           
+  kasirId       String            
+  kasir         User              @relation("KasirTransaction", fields: [kasirId], references: [id])
+  items         TransactionItem[]
+  total         Decimal           @db.Decimal(10, 2)
+  discount      Decimal?          @db.Decimal(10, 2)
+  paymentMethod String?
+  notes         String?
+  createdAt     DateTime          @default(now())
+}

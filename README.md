@@ -1,6 +1,7 @@
-# Struktur Proyek Aplikasi Kasir Next.js
+# Struktur Proyek Aplikasi Kasir
 
 ## Struktur Folder
+
 ```
 kasir-app/
 │
@@ -83,43 +84,88 @@ kasir-app/
 ## Fitur Utama
 
 ### 1. Autentikasi
+
+# <<<<<<< HEAD
+
+> > > > > > > 5604f9f (Initial commit: Web Kasir Next.js project)
+
 - Login
 - Register
 - Role-based Access Control (Admin vs Kasir)
 
 ### 2. Manajemen Produk (Admin)
+
+# <<<<<<< HEAD
+
+> > > > > > > 5604f9f (Initial commit: Web Kasir Next.js project)
+
 - Tambah Produk
 - Edit Produk
 - Hapus Produk
 - Manajemen Stok
 
 ### 3. Transaksi (Kasir)
+
+# <<<<<<< HEAD
+
+> > > > > > > 5604f9f (Initial commit: Web Kasir Next.js project)
+
 - Proses Penjualan
 - Riwayat Transaksi
 - Cetak Struk
 
 ### 4. Laporan (Admin)
+
+# <<<<<<< HEAD
+
+> > > > > > > 5604f9f (Initial commit: Web Kasir Next.js project)
+
 - Laporan Penjualan
 - Laporan Stok
 - Analitik Sederhana
 
 ## Teknologi Utama
+
+<<<<<<< HEAD
+
 - Next.js 13+ (App Router)
 - TypeScript
 - Prisma ORM
-- PostgreSQL
+- # PostgreSQL
+
+- Next.js 13+ (App Router)
+- TypeScript
+- Prisma ORM
+- Mysql
+  > > > > > > > 5604f9f (Initial commit: Web Kasir Next.js project)
 - Tailwind CSS
 - NextAuth.js (Autentikasi)
 - Zod (Validasi)
 
 ## Alur Kerja Utama
+
+# <<<<<<< HEAD
+
+> > > > > > > 5604f9f (Initial commit: Web Kasir Next.js project)
+
 1. Autentikasi Pengguna
 2. Redirect Berdasarkan Role
 3. Manajemen Produk/Transaksi
 4. Laporan & Analitik
 
 ## Persyaratan Sistem
+
+<<<<<<< HEAD
+
 - Node.js 18+
 - PostgreSQL 13+
+- # Browser Modern
+
+- Node.js 18+
+- Mysql
 - Browser Modern
+
+```
+
+>>>>>>> 5604f9f (Initial commit: Web Kasir Next.js project)
 ```
